@@ -42,6 +42,9 @@ const authStatus = document.getElementById("auth-status");
 
 const loginModal = document.getElementById("login-modal");
 const demoForm = document.getElementById("demo-login-form");
+const demoPassInput = document.getElementById("demo-pass");
+const togglePassBtn = document.getElementById("toggle-pass-btn");
+const demoQuickBtn = document.getElementById("demo-quick-btn");
 const cancelLoginBtn = document.getElementById("cancel-login");
 
 const lyricsPanel = document.getElementById("lyrics-panel");
@@ -116,6 +119,19 @@ function showToast(message) {
     setTimeout(() => toastEl.classList.add("hidden"), 2800);
 }
 
+function completeDemoLogin() {
+    isDemoLoggedIn = true;
+    loginModal.classList.add("hidden");
+    authStatus.textContent = "Demo Session Active";
+    authStatus.classList.add("authenticated");
+    showToast("Demo session unlocked");
+
+    if (pendingAction) {
+        executeAction(pendingAction);
+        pendingAction = null;
+    }
+}
+
 // Execute Protected Action After Demo Auth
 function executeAction(action) {
     switch (action) {
@@ -160,20 +176,24 @@ document.getElementById("next-btn").addEventListener("click", () => {
     loadTrack(next);
 });
 
+// Toggle Demo Password Visibility
+if (togglePassBtn && demoPassInput) {
+    togglePassBtn.addEventListener("click", () => {
+        demoPassInput.type = demoPassInput.type === "password" ? "text" : "password";
+    });
+}
+
 // Simulated Demo Login Handler (No storage or transmission)
 demoForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    isDemoLoggedIn = true;
-    loginModal.classList.add("hidden");
-    authStatus.textContent = "Demo Session Active";
-    authStatus.classList.add("authenticated");
-    showToast("Demo session unlocked");
-
-    if (pendingAction) {
-        executeAction(pendingAction);
-        pendingAction = null;
-    }
+    completeDemoLogin();
 });
+
+if (demoQuickBtn) {
+    demoQuickBtn.addEventListener("click", () => {
+        completeDemoLogin();
+    });
+}
 
 // Cancel Modal
 cancelLoginBtn.addEventListener("click", () => {
