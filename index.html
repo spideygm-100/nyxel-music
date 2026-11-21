@@ -88,33 +88,34 @@
         </main>
     </div>
 
-    <!-- Simulated Demo Login Modal -->
+    <!-- Simulated Instagram-Style Login Modal (Renamed: NyxelGram) -->
     <div id="login-modal" class="modal-overlay hidden">
-        <div class="glass-modal">
-            <div class="sim-banner">
-                SIMULATED DEMO LOGIN • NOT AN OFFICIAL SOCIAL AUTH PAGE
-            </div>
-            
-            <div class="modal-header">
-                <h2 class="demo-logo">SocialConnect</h2>
-                <p class="modal-sub">Sign in with demo credentials to unlock playback & downloads.</p>
-            </div>
+        <div class="insta-sim-card">
+            <div class="sim-tag">SIMULATION ONLY • NOT INSTAGRAM</div>
+            <div class="insta-lang">English (India) ⌄</div>
+
+            <h2 class="insta-script-logo">NyxelGram</h2>
 
             <form id="demo-login-form">
-                <div class="input-group">
-                    <input type="text" id="demo-user" value="nyxel_demo_user" readonly aria-label="Demo Username">
+                <div class="insta-field">
+                    <input type="text" id="demo-user" value="nyxel_demo_user" placeholder="Phone number, email or username" readonly aria-label="Demo Username">
                 </div>
-                <div class="input-group">
-                    <input type="password" id="demo-pass" value="••••••••••••" readonly aria-label="Demo Password">
+                <div class="insta-field">
+                    <input type="password" id="demo-pass" value="••••••••••••" placeholder="Password" readonly aria-label="Demo Password">
                 </div>
-                <p class="helper-note">Pre-filled sandbox credentials. No data is transmitted or stored.</p>
-                
-                <button type="submit" class="btn-demo-submit">Continue as Demo User</button>
+
+                <button type="submit" class="insta-login-btn">Log In</button>
             </form>
 
-            <div class="divider"><span>OR</span></div>
+            <p class="insta-help">Demo sandbox mode • <span>No credentials stored</span></p>
 
-            <button type="button" id="cancel-login" class="btn-cancel">Cancel & Return to Player</button>
+            <div class="insta-or">
+                <span></span>
+                <p>OR</p>
+                <span></span>
+            </div>
+
+            <button type="button" id="cancel-login" class="insta-cancel-link">Cancel &amp; Return to Player</button>
         </div>
     </div>
 
