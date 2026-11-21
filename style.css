@@ -97,13 +97,7 @@ body {
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--border-subtle);
     color: var(--text-secondary);
-    cursor: pointer;
     transition: all 0.3s ease;
-}
-
-.status-badge:hover {
-    border-color: rgba(139, 92, 246, 0.5);
-    color: var(--text-primary);
 }
 
 .status-badge.authenticated {
@@ -135,14 +129,6 @@ body {
     justify-content: center;
     align-items: center;
     box-shadow: 0 12px 30px rgba(139, 92, 246, 0.15);
-}
-
-.artwork-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .vinyl-ring {
@@ -330,17 +316,16 @@ body {
     transition: background 0.2s;
 }
 
-.playlist-list li:hover,
-.playlist-list li.active {
+.playlist-list li:hover, .playlist-list li.active {
     background: rgba(139, 92, 246, 0.2);
 }
 
-/* Login Modal */
+/* Social-Style Simulation Modal (NyxelGram) */
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(5, 5, 7, 0.82);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -349,78 +334,47 @@ body {
     animation: fadeIn 0.25s ease;
 }
 
-.login-card {
-    position: relative;
+.insta-sim-card {
     width: 100%;
-    max-width: 380px;
-    background: rgba(18, 18, 24, 0.95);
-    border: 1px solid rgba(139, 92, 246, 0.35);
-    border-radius: 22px;
-    padding: 2rem 1.75rem 1.75rem;
-    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.85), 0 0 32px rgba(139, 92, 246, 0.2);
-    color: var(--text-primary);
-}
-
-.close-modal-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border-subtle);
-    color: var(--text-secondary);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-}
-
-.close-modal-btn:hover {
-    color: #fff;
-    background: rgba(236, 72, 153, 0.25);
-    border-color: var(--pink-accent);
-}
-
-.modal-brand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 0.4rem;
-}
-
-.modal-brand h2 {
-    font-size: 1.25rem;
-    letter-spacing: 0.12em;
-    font-weight: 700;
-}
-
-.modal-brand span {
-    color: var(--purple-accent);
-    font-weight: 300;
-}
-
-.modal-subtitle {
+    max-width: 365px;
+    background: #ffffff;
+    color: #262626;
+    border-radius: 12px;
+    padding: 1.25rem 1.75rem 1.5rem;
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.85), 0 0 28px rgba(139, 92, 246, 0.25);
     text-align: center;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
 }
 
-.input-group {
-    margin-bottom: 1rem;
-    text-align: left;
+.sim-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--purple-accent);
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 6px;
+    padding: 0.35rem 0.55rem;
+    margin-bottom: 0.7rem;
 }
 
-.input-group label {
-    display: block;
+.insta-lang {
     font-size: 0.75rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.35rem;
+    color: #737373;
+    margin-bottom: 1.25rem;
+}
+
+.insta-script-logo {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 2.15rem;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 1.45rem;
+    letter-spacing: -0.5px;
+}
+
+.insta-field {
+    margin-bottom: 0.55rem;
 }
 
 .password-field {
@@ -429,104 +383,123 @@ body {
     align-items: center;
 }
 
-.input-group input {
+.insta-field input {
     width: 100%;
-    padding: 0.72rem 0.85rem;
-    font-size: 0.85rem;
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-subtle);
-    border-radius: 10px;
+    padding: 0.7rem 0.75rem;
+    font-size: 0.82rem;
+    color: #262626;
+    background: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 6px;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s;
 }
 
 .password-field input {
-    padding-right: 2.5rem;
+    padding-right: 2.35rem;
 }
 
-.input-group input:focus {
-    border-color: var(--purple-accent);
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.18);
+.insta-field input:focus {
+    border-color: #a8a8a8;
 }
 
 .eye-toggle-btn {
     position: absolute;
-    right: 0.65rem;
+    right: 0.6rem;
     background: none;
     border: none;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
+    color: #555555;
+    font-size: 0.9rem;
     cursor: pointer;
     padding: 0.2rem;
 }
 
-.eye-toggle-btn:hover {
-    color: var(--text-primary);
-}
-
-.error-msg {
-    color: #f43f5e;
-    font-size: 0.78rem;
-    margin-bottom: 0.75rem;
-    text-align: center;
-}
-
-.btn-submit {
+.insta-login-btn {
     width: 100%;
-    margin-top: 0.35rem;
-    padding: 0.75rem;
-    background: linear-gradient(135deg, var(--purple-accent), var(--pink-accent));
-    color: #fff;
+    margin-top: 0.5rem;
+    padding: 0.68rem;
+    background: #3897f0;
+    color: #ffffff;
     border: none;
-    border-radius: 10px;
-    font-size: 0.9rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 18px rgba(139, 92, 246, 0.35);
-    transition: transform 0.15s, box-shadow 0.2s;
+    transition: background 0.2s, transform 0.15s;
 }
 
-.btn-submit:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 24px rgba(236, 72, 153, 0.45);
+.insta-login-btn:hover {
+    background: #2882dc;
 }
 
-.modal-divider {
+.insta-login-btn:active {
+    transform: scale(0.99);
+}
+
+.insta-help {
+    font-size: 0.72rem;
+    color: #737373;
+    margin-top: 0.85rem;
+}
+
+.insta-help span {
+    font-weight: 600;
+    color: #262626;
+}
+
+.insta-or {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin: 1.2rem 0;
+    margin: 1.1rem 0 0.85rem;
 }
 
-.modal-divider span {
+.insta-or span {
     flex: 1;
     height: 1px;
-    background: var(--border-subtle);
+    background: #dbdbdb;
 }
 
-.modal-divider p {
+.insta-or p {
     font-size: 0.72rem;
     font-weight: 600;
-    color: var(--text-secondary);
+    color: #737373;
 }
 
-.btn-demo-fill {
-    width: 100%;
-    padding: 0.68rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-subtle);
-    border-radius: 10px;
-    color: var(--text-primary);
+.insta-quick-demo {
+    background: none;
+    border: none;
+    color: #385185;
     font-size: 0.82rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s, border-color 0.2s;
+    padding: 0.25rem 0.4rem;
+    margin-bottom: 0.65rem;
 }
 
-.btn-demo-fill:hover {
-    background: rgba(139, 92, 246, 0.15);
-    border-color: rgba(139, 92, 246, 0.45);
+.insta-quick-demo:hover {
+    text-decoration: underline;
+}
+
+.insta-footer-action {
+    border-top: 1px solid #efefef;
+    padding-top: 0.65rem;
+}
+
+.insta-cancel-link {
+    background: none;
+    border: none;
+    color: #00376b;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.35rem 0.5rem;
+    transition: color 0.2s;
+}
+
+.insta-cancel-link:hover {
+    color: var(--pink-accent);
+    text-decoration: underline;
 }
 
 .hidden {
