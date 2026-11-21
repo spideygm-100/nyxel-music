@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyxel Music | Cinematic Audio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Ambient Background Glow -->
+    <div class="ambient-glow glow-purple"></div>
+    <div class="ambient-glow glow-pink"></div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="top-bar">
+            <div class="brand">
+                <span class="brand-dot"></span>
+                <h1>NYXEL <span>MUSIC</span></h1>
+            </div>
+            <div id="auth-status" class="status-badge">Guest Mode</div>
+        </header>
+
+        <!-- Main Music Player Card -->
+        <main class="player-card">
+            <div class="artwork-wrapper">
+                <div class="artwork-placeholder" id="track-art">
+                    <div class="vinyl-ring"></div>
+                    <span class="art-label">NYXEL</span>
+                </div>
+            </div>
+
+            <div class="track-info">
+                <h2 id="track-title">Midnight Neon</h2>
+                <p class="artist" id="track-artist">Nyxel Soundworks</p>
+                <p class="description" id="track-desc">Dark synthwave textures layered over deep sub-bass and cinematic atmospheres.</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-section">
+                <div class="progress-bar" id="progress-container">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="time-stamps">
+                    <span id="current-time">0:00</span>
+                    <span id="total-time">3:42</span>
+                </div>
+            </div>
+
+            <!-- Primary Controls -->
+            <div class="controls">
+                <button class="btn-icon" id="prev-btn" title="Previous Track">⏮</button>
+                <button class="btn-play protected-action" data-action="play" id="play-btn" title="Play / Pause">▶</button>
+                <button class="btn-icon" id="next-btn" title="Next Track">⏭</button>
+            </div>
+
+            <!-- Secondary Protected Actions -->
+            <div class="action-bar">
+                <button class="btn-secondary protected-action" data-action="download">
+                    <span>↓</span> Download
+                </button>
+                <button class="btn-secondary protected-action" data-action="lyrics">
+                    <span>≡</span> Lyrics
+                </button>
+                <button class="btn-secondary protected-action" data-action="playlist">
+                    <span>+</span> Playlist
+                </button>
+            </div>
+
+            <!-- Expandable Panels (Lyrics & Playlist) -->
+            <div id="lyrics-panel" class="drawer hidden">
+                <h3>Track Lyrics</h3>
+                <p id="lyrics-content">
+                    Shadows stretch across the chrome,<br>
+                    Static hums inside the zone.<br>
+                    Purple lights reflect the rain,<br>
+                    Echoes fade into the frame.
+                </p>
+            </div>
+
+            <div id="playlist-panel" class="drawer hidden">
+                <h3>Up Next</h3>
+                <ul class="playlist-list" id="playlist-items">
+                    <!-- Populated via JS -->
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <!-- Simulated Demo Login Modal -->
+    <div id="login-modal" class="modal-overlay hidden">
+        <div class="glass-modal">
+            <div class="sim-banner">
+                SIMULATED DEMO LOGIN • NOT AN OFFICIAL SOCIAL AUTH PAGE
+            </div>
+            
+            <div class="modal-header">
+                <h2 class="demo-logo">SocialConnect</h2>
+                <p class="modal-sub">Sign in with demo credentials to unlock playback & downloads.</p>
+            </div>
+
+            <form id="demo-login-form">
+                <div class="input-group">
+                    <input type="text" id="demo-user" value="nyxel_demo_user" readonly aria-label="Demo Username">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="demo-pass" value="••••••••••••" readonly aria-label="Demo Password">
+                </div>
+                <p class="helper-note">Pre-filled sandbox credentials. No data is transmitted or stored.</p>
+                
+                <button type="submit" class="btn-demo-submit">Continue as Demo User</button>
+            </form>
+
+            <div class="divider"><span>OR</span></div>
+
+            <button type="button" id="cancel-login" class="btn-cancel">Cancel & Return to Player</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
