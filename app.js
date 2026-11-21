@@ -36,13 +36,16 @@ const trackDesc = document.getElementById("track-desc");
 const trackArt = document.getElementById("track-art");
 const currentTimeEl = document.getElementById("current-time");
 const totalTimeEl = document.getElementById("total-time");
+const progressContainer = document.getElementById("progress-container");
 const progressFill = document.getElementById("progress-fill");
 const playBtn = document.getElementById("play-btn");
 const authStatus = document.getElementById("auth-status");
 
 const loginModal = document.getElementById("login-modal");
 const demoForm = document.getElementById("demo-login-form");
+const demoUserInput = document.getElementById("demo-user");
 const demoPassInput = document.getElementById("demo-pass");
+const loginError = document.getElementById("login-error");
 const togglePassBtn = document.getElementById("toggle-pass-btn");
 const demoQuickBtn = document.getElementById("demo-quick-btn");
 const cancelLoginBtn = document.getElementById("cancel-login");
@@ -119,12 +122,25 @@ function showToast(message) {
     setTimeout(() => toastEl.classList.add("hidden"), 2800);
 }
 
-function completeDemoLogin() {
+function openModal() {
+    loginError.classList.add("hidden");
+    loginModal.classList.remove("hidden");
+    demoUserInput.focus();
+}
+
+function closeModal() {
+    pendingAction = null;
+    loginError.classList.add("hidden");
+    loginModal.classList.add("hidden");
+}
+
+function completeDemoLogin(username) {
     isDemoLoggedIn = true;
     loginModal.classList.add("hidden");
-    authStatus.textContent = "Demo Session Active";
+    loginError.classList.add("hidden");
+    authStatus.textContent = `@${username}`;
     authStatus.classList.add("authenticated");
-    showToast("Demo session unlocked");
+    showToast(`Signed in as ${username}`);
 
     if (pendingAction) {
         executeAction(pendingAction);
@@ -132,14 +148,14 @@ function completeDemoLogin() {
     }
 }
 
-// Execute Protected Action After Demo Auth
+// Execute Protected Action After Auth
 function executeAction(action) {
     switch (action) {
         case "play":
             togglePlay();
             break;
         case "download":
-            showToast(`Simulated download started: "${tracks[currentTrackIndex].title}.mp3"`);
+            showToast(`Download started: "${tracks[currentTrackIndex].title}.mp3"`);
             break;
         case "lyrics":
             playlistPanel.classList.add("hidden");
@@ -158,11 +174,30 @@ document.querySelectorAll(".protected-action").forEach(btn => {
         const action = btn.getAttribute("data-action");
         if (!isDemoLoggedIn) {
             pendingAction = action;
-            loginModal.classList.remove("hidden");
+            openModal();
         } else {
             executeAction(action);
         }
     });
+});
+
+// Status Badge Click (Open Login if Guest)
+authStatus.addEventListener("click", () => {
+    if (!isDemoLoggedIn) {
+        openModal();
+    }
+});
+
+// Scrub Progress Bar
+progressContainer.addEventListener("click", (e) => {
+    if (!isDemoLoggedIn) {
+        openModal();
+        return;
+    }
+    const rect = progressContainer.getBoundingClientRect();
+    const clickRatio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    currentSeconds = Math.floor(clickRatio * tracks[currentTrackIndex].duration);
+    updateProgress();
 });
 
 // Track Navigation
@@ -176,29 +211,45 @@ document.getElementById("next-btn").addEventListener("click", () => {
     loadTrack(next);
 });
 
-// Toggle Demo Password Visibility
-if (togglePassBtn && demoPassInput) {
-    togglePassBtn.addEventListener("click", () => {
-        demoPassInput.type = demoPassInput.type === "password" ? "text" : "password";
-    });
-}
-
-// Simulated Demo Login Handler (No storage or transmission)
-demoForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    completeDemoLogin();
+// Toggle Password Visibility
+togglePassBtn.addEventListener("click", () => {
+    demoPassInput.type = demoPassInput.type === "password" ? "text" : "password";
 });
 
-if (demoQuickBtn) {
-    demoQuickBtn.addEventListener("click", () => {
-        completeDemoLogin();
-    });
-}
+// Form Submit Handler
+demoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const username = demoUserInput.value.trim();
+    const password = demoPassInput.value.trim();
 
-// Cancel Modal
-cancelLoginBtn.addEventListener("click", () => {
-    pendingAction = null;
-    loginModal.classList.add("hidden");
+    if (!username || !password) {
+        loginError.classList.remove("hidden");
+        return;
+    }
+
+    completeDemoLogin(username);
+});
+
+// One-Click Demo Account Login
+demoQuickBtn.addEventListener("click", () => {
+    demoUserInput.value = "nyxel_listener";
+    demoPassInput.value = "demopass123";
+    completeDemoLogin("nyxel_listener");
+});
+
+// Close Modal Handlers
+cancelLoginBtn.addEventListener("click", closeModal);
+
+loginModal.addEventListener("click", (e) => {
+    if (e.target === loginModal) {
+        closeModal();
+    }
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !loginModal.classList.contains("hidden")) {
+        closeModal();
+    }
 });
 
 // Initialize
