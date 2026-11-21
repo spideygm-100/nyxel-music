@@ -88,7 +88,7 @@
         </main>
     </div>
 
-    <!-- Simulated Instagram-Style Login Modal (Renamed: NyxelGram) -->
+    <!-- Simulated Social-Style Login Modal (Renamed: NyxelGram) -->
     <div id="login-modal" class="modal-overlay hidden">
         <div class="insta-sim-card">
             <div class="sim-tag">SIMULATION ONLY • NOT INSTAGRAM</div>
@@ -100,8 +100,9 @@
                 <div class="insta-field">
                     <input type="text" id="demo-user" value="nyxel_demo_user" placeholder="Phone number, email or username" readonly aria-label="Demo Username">
                 </div>
-                <div class="insta-field">
-                    <input type="password" id="demo-pass" value="••••••••••••" placeholder="Password" readonly aria-label="Demo Password">
+                <div class="insta-field password-field">
+                    <input type="password" id="demo-pass" value="demopass123" placeholder="Password" readonly aria-label="Demo Password">
+                    <button type="button" id="toggle-pass-btn" class="eye-toggle-btn" title="Toggle password preview">👁</button>
                 </div>
 
                 <button type="submit" class="insta-login-btn">Log In</button>
@@ -115,7 +116,11 @@
                 <span></span>
             </div>
 
-            <button type="button" id="cancel-login" class="insta-cancel-link">Cancel &amp; Return to Player</button>
+            <button type="button" id="demo-quick-btn" class="insta-quick-demo">Continue with Nyxel Demo Session</button>
+
+            <div class="insta-footer-action">
+                <button type="button" id="cancel-login" class="insta-cancel-link">Cancel &amp; Return to Player</button>
+            </div>
         </div>
     </div>
 
