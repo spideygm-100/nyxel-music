@@ -320,7 +320,7 @@ body {
     background: rgba(139, 92, 246, 0.2);
 }
 
-/* Instagram-Style Simulation Modal (NyxelGram) */
+/* Social-Style Simulation Modal (NyxelGram) */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -377,6 +377,12 @@ body {
     margin-bottom: 0.55rem;
 }
 
+.password-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .insta-field input {
     width: 100%;
     padding: 0.7rem 0.75rem;
@@ -389,8 +395,23 @@ body {
     transition: border-color 0.2s;
 }
 
+.password-field input {
+    padding-right: 2.35rem;
+}
+
 .insta-field input:focus {
     border-color: #a8a8a8;
+}
+
+.eye-toggle-btn {
+    position: absolute;
+    right: 0.6rem;
+    background: none;
+    border: none;
+    color: #555555;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.2rem;
 }
 
 .insta-login-btn {
@@ -443,6 +464,26 @@ body {
     font-size: 0.72rem;
     font-weight: 600;
     color: #737373;
+}
+
+.insta-quick-demo {
+    background: none;
+    border: none;
+    color: #385185;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.25rem 0.4rem;
+    margin-bottom: 0.65rem;
+}
+
+.insta-quick-demo:hover {
+    text-decoration: underline;
+}
+
+.insta-footer-action {
+    border-top: 1px solid #efefef;
+    padding-top: 0.65rem;
 }
 
 .insta-cancel-link {
