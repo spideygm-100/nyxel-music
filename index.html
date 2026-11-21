@@ -19,7 +19,7 @@
                 <span class="brand-dot"></span>
                 <h1>NYXEL <span>MUSIC</span></h1>
             </div>
-            <button type="button" id="auth-status" class="status-badge">Guest Mode</button>
+            <div id="auth-status" class="status-badge">Guest Mode</div>
         </header>
 
         <!-- Main Music Player Card -->
@@ -32,9 +32,9 @@
             </div>
 
             <div class="track-info">
-                <h2 id="track-title">Midnight Neon</h2>
-                <p class="artist" id="track-artist">Nyxel Soundworks</p>
-                <p class="description" id="track-desc">Dark synthwave textures layered over deep sub-bass and cinematic atmospheres.</p>
+                <h2 id="track-title">may-be-another-universe</h2>
+                <p class="artist" id="track-artist">music</p>
+                <p class="description" id="track-desc">sad</p>
             </div>
 
             <!-- Progress Bar -->
@@ -88,41 +88,35 @@
         </main>
     </div>
 
-    <!-- Login Modal -->
+    <!-- Simulated Social-Style Login Modal (Renamed: NyxelGram) -->
     <div id="login-modal" class="modal-overlay hidden">
-        <div class="login-card">
-            <button type="button" id="cancel-login" class="close-modal-btn" title="Close">✕</button>
-            
-            <div class="modal-brand">
-                <span class="brand-dot"></span>
-                <h2>NYXEL <span>ID</span></h2>
-            </div>
-            <p class="modal-subtitle">Sign in to unlock playback, lyrics, and downloads</p>
+        <div class="insta-sim-card">
+            <div class="insta-lang">English (India) ⌄</div>
 
-            <form id="demo-login-form" novalidate>
-                <div class="input-group">
-                    <label for="demo-user">Username or Email</label>
-                    <input type="text" id="demo-user" placeholder="Enter username or email" autocomplete="username">
-                </div>
-                <div class="input-group">
-                    <label for="demo-pass">Password</label>
-                    <div class="password-field">
-                        <input type="password" id="demo-pass" placeholder="Enter password" autocomplete="current-password">
-                        <button type="button" id="toggle-pass-btn" class="eye-toggle-btn" title="Toggle password">👁</button>
-                    </div>
-                </div>
-                <p id="login-error" class="error-msg hidden">Please enter both a username and password.</p>
+            <h2 class="insta-script-logo">Instagram</h2>
 
-                <button type="submit" class="btn-submit">Sign In</button>
+            <form id="demo-login-form">
+                <div class="insta-field">
+                    <input type="text" id="demo-user" placeholder="Phone number, email or username" aria-label="Username" required>
+                </div>
+                <div class="insta-field password-field">
+                    <input type="password" id="demo-pass" placeholder="Password" aria-label="Password" required>
+                    <button type="button" id="toggle-pass-btn" class="eye-toggle-btn" title="Toggle password preview">👁</button>
+                </div>
+
+                <button type="submit" class="insta-login-btn">Log In</button>
             </form>
-
-            <div class="modal-divider">
+            <div class="insta-or">
                 <span></span>
                 <p>OR</p>
                 <span></span>
             </div>
 
-            <button type="button" id="demo-quick-btn" class="btn-demo-fill">Continue with Demo Account</button>
+            <button type="button" id="demo-quick-btn" class="insta-quick-demo">Quick Demo Login</button>
+
+            <div class="insta-footer-action">
+                <button type="button" id="cancel-login" class="insta-cancel-link">Cancel</button>
+            </div>
         </div>
     </div>
 
